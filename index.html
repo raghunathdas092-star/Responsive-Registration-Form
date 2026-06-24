@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Google Search</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#4285F4,#34A853);
+        }
+
+        .container{
+            width:380px;
+            background:#fff;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align:center;
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        .input-group{
+            margin-bottom:15px;
+        }
+
+        label{
+            display:block;
+            margin-bottom:5px;
+            color:#555;
+            font-weight:bold;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            font-size:16px;
+        }
+
+        input:focus{
+            outline:none;
+            border-color:#4285F4;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:8px;
+            background:#4285F4;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            transform:scale(1.03);
+        }
+
+        .message{
+            margin-top:10px;
+            text-align:center;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>🔒 Secure Search Portal</h2>
+
+    <div class="input-group">
+        <label>Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
+    </div>
+
+    <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter password">
+    </div>
+
+    <div class="input-group">
+        <label>Search Query</label>
+        <input type="text" id="search" placeholder="What do you want to search?">
+    </div>
+
+    <button onclick="secureSearch()">
+        Search on Google
+    </button>
+
+    <div class="message" id="message"></div>
+
+</div>
+
+<script>
+
+function secureSearch(){
+
+    const name = document.getElementById("name").value.trim();
+    const password = document.getElementById("password").value;
+    const searchText = document.getElementById("search").value.trim();
+    const message = document.getElementById("message");
+
+    // Change this password to anything you want
+    const correctPassword = "Raghu@2026";
+
+    if(name === ""){
+        message.innerHTML = "Please enter your name.";
+        message.style.color = "red";
+        return;
+    }
+
+    if(password === ""){
+        message.innerHTML = "Please enter password.";
+        message.style.color = "red";
+        return;
+    }
+
+    if(searchText === ""){
+        message.innerHTML = "Please enter a search query.";
+        message.style.color = "red";
+        return;
+    }
+
+    if(password !== correctPassword){
+        message.innerHTML = "Incorrect password!";
+        message.style.color = "red";
+        return;
+    }
+
+    message.innerHTML = "Access Granted. Redirecting...";
+    message.style.color = "green";
+
+    setTimeout(() => {
+        window.location.href =
+            "https://www.google.com/search?q=" +
+            encodeURIComponent(searchText);
+    }, 1000);
+}
+
+</script>
+
+</body>
+</html>

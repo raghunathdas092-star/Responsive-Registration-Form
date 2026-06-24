@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Secure Search</title>
+<style>
+body{
+font-family: Arial;
+background: linear-gradient(135deg,#4285F4,#34A853);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+.container{
+background:white;
+width:400px;
+padding:30px;
+border-radius:15px;
+box-shadow:0 0 15px rgba(0,0,0,.2);
+}
+h2{
+text-align:center;
+}
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+box-sizing:border-box;
+}
+button{
+width:100%;
+padding:12px;
+border:none;
+background:#4285F4;
+color:white;
+cursor:pointer;
+}
+.error{
+color:red;
+text-align:center;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Secure Search Portal</h2>
+<% if(error){ %>
+<p class="error">
+<%= error %>
+</p>
+<% } %>
+<form action="/search" method="POST">
+<input
+type="text"
+name="name"
+placeholder="Enter Name"
+required>
+<input
+type="password"
+name="password"
+placeholder="Enter Password"
+required>
+<input
+type="text"
+name="search"
+placeholder="Search Google"
+required>
+<button type="submit">
+Search
+</button>
+</form>
+</div>
+</body>
+</html>
